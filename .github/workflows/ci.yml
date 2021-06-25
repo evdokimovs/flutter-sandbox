@@ -11,7 +11,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: stable
-      - run: make flutter.fmt check=yes
+      - run: make fmt check=yes
 
   lint:
     name: Lint
@@ -22,7 +22,7 @@ jobs:
         with:
           channel: dev
       - run: make deps
-      - run: make flutter.lint
+      - run: make lint
 
   test:
     name: Tests
@@ -34,7 +34,7 @@ jobs:
           channel: stable
       - uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 29
           target: google_apis
           arch: x86_64
           profile: Nexus 6
