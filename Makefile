@@ -1,3 +1,6 @@
+# Checks two given strings for equality.
+eq = $(if $(or $(1),$(2)),$(and $(findstring $(1),$(2)),\
+                                $(findstring $(2),$(1))),1)
 deps:
 	flutter pub get
 
@@ -7,8 +10,10 @@ fmt:
 lint:
 	flutter analyze .
 
-test.widget:
+test:
 	flutter test
 
-.PHONY:
-	deps fmt lint test
+build:
+	flutter build $(if $(call eq,$(platform),ios),ios,apk)
+
+.PHONY: deps build fmt lint test
