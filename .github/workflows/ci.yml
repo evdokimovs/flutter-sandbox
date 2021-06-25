@@ -41,8 +41,8 @@ jobs:
           emulator-build: 7425822
           script: make test.widget
 
-  release:
-    name: Release APK
+  build-android:
+    name: Build Android application
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
