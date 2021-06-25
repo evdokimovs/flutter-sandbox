@@ -39,4 +39,4 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           emulator-build: 7425822
-          script: make test
+          script: make test.widget

@@ -7,8 +7,8 @@ fmt:
 lint:
 	flutter analyze .
 
-test:
+test.widget:
 	flutter test
 
 .PHONY:
-	deps fmt lint
+	deps fmt lint test
