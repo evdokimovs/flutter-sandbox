@@ -26,7 +26,7 @@ jobs:
 
   test:
     name: Tests
-    runs-on: macos-11
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
@@ -38,5 +38,5 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: Nexus 6
-          emulator-build: 6110076
+          emulator-build: 7425822
           script: make test
