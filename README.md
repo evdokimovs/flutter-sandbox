@@ -283,8 +283,10 @@ Effective Dart recommendations.
 
 If __`case` section__ consists of __one line exactly__, then it's allowed to
 __place `break` statement on the same line__.
+
+#### 👍 Switch statement example
+
 ```dart
-// CORRECT
 switch (fruit) {
   case 'apple':
     print('delish'); break;
@@ -296,8 +298,11 @@ switch (fruit) {
     print('fuzzy');
     break;  
 }
+```
 
-// WRONG
+#### 🚫 `break` statements placed on the same line on multi-line `case` section:
+
+```dart
 switch (fruit) {
   case 'peach':
     print('sweet');
@@ -312,7 +317,7 @@ __Trailing comma__ of last item is __mandatory for multi-line__ collection
 declaration.  
 __No trailing comma__ required __for single-line__ collection declaration.
 
-#### 👍 Collections example
+#### 👍 Collections examples
 
 - Multi-line collection:
 
@@ -335,7 +340,7 @@ __No trailing comma__ required __for single-line__ collection declaration.
     args.addAll(["--mode", "release", "--checked"]);
     ```
 
-#### 🚫 Wrong collections example
+#### 🚫 Wrong collections examples
 
 - Multi-line collection without trailing comma:
 
