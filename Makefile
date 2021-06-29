@@ -19,6 +19,6 @@ build:
 release:
 	-git tag -d latest
 	git tag latest
-	git push latest
+	git push origin latest
 
 .PHONY: deps build fmt lint test
