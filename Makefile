@@ -16,4 +16,9 @@ test:
 build:
 	flutter build $(if $(call eq,$(platform),ios),ios,apk)
 
+release:
+	-git tag -d latest
+	git tag latest
+	git push latest
+
 .PHONY: deps build fmt lint test
