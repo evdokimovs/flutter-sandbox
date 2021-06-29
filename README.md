@@ -5,6 +5,7 @@ Using [flutter_webrtc] library, create application for video/audio calls between
 Application should work on Android platform.
 
 [Application design on Figma](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
+[Application prototype](https://www.figma.com/proto/E9BZb5DuoTpHgTjriqMwip/Untitled)
 
 
 
@@ -217,7 +218,7 @@ Implement employees salary and ajax queries
     update Employee salary algorithm
     ```
 
-- Verb is not in the [imperative mood][200]:
+- Verb is not in the [imperative mood][2]:
 
     ```
     Updates Employee salary algorithm
@@ -300,7 +301,7 @@ switch (fruit) {
 }
 ```
 
-#### 🚫 `break` statements placed on the same line on multi-line `case` section:
+#### 🚫 `break` statements placed on the same line in multi-line `case` section:
 
 ```dart
 switch (fruit) {
@@ -374,11 +375,13 @@ code readability.
 
 
 
-[Medea]: https://github.com/instrumentisto/medea
-[flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
 [1]: https://webrtcglossary.com/signaling/
 [2]: https://en.wikipedia.org/wiki/Imperative_mood
 [3]: https://www.browserstack.com/guide/end-to-end-testing
+
+[Medea]: https://github.com/instrumentisto/medea
+[flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
 [ICE]: https://webrtcglossary.com/ice/
 [Effective Dart]: https://www.dartlang.org/guides/language/effective-dart
 [Git-ignored]: https://git-scm.com/docs/gitignore
+[Git]: https://git-scm.com
