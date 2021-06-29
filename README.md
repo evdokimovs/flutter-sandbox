@@ -311,33 +311,52 @@ switch (fruit) {
 __Trailing comma__ of last item is __mandatory for multi-line__ collection
 declaration.  
 __No trailing comma__ required __for single-line__ collection declaration.
-```dart
-// CORRECT
-Map<int, String> map = {
-  0: 'zero',
-  1: 'one',
-};
-args.addAll([
-  "--mode",
-  "release",
-  "--checked",
-]);
-Map<int, String> map = {0: 'zero', 1: 'one'};
-args.addAll(["--mode", "release", "--checked"]);
 
-// WRONG
-Map<int, String> map = {
-  0: 'zero',
-  1: 'one'
-};
-args.addAll([
-  "--mode",
-  "release",
-  "--checked"
-]);
-Map<int, String> map = {0: 'zero', 1: 'one',};
-args.addAll(["--mode", "release", "--checked",]);
-```
+#### 👍 Collections example
+
+- Multi-line collection:
+
+    ```dart
+    Map<int, String> map = {
+      0: 'zero',
+      1: 'one',
+    };
+    args.addAll([
+      "--mode",
+      "release",
+      "--checked",
+    ]);
+    ```
+
+- Single-line collection:
+
+    ```dart
+    Map<int, String> map = {0: 'zero', 1: 'one'};
+    args.addAll(["--mode", "release", "--checked"]);
+    ```
+
+#### 🚫 Wrong collections example
+
+- Multi-line collection without trailing comma:
+
+    ```dart
+    Map<int, String> map = {
+      0: 'zero',
+      1: 'one'
+    };
+    args.addAll([
+      "--mode",
+      "release",
+      "--checked"
+    ]);
+    ```
+
+- Single-line collection with trailing comma:
+
+    ```dart
+    Map<int, String> map = {0: 'zero', 1: 'one',};
+    args.addAll(["--mode", "release", "--checked",]);
+    ```
 
 
 ### dartfmt
