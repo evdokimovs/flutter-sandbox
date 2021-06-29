@@ -3,24 +3,34 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use actix_web::App;
 use actix::{Actor, Addr, AsyncContext, Handler, Message, StreamHandler};
 use actix_web::{
-    web::{resource, Data, Payload},
-    HttpRequest, HttpResponse, HttpServer,
+    web::{resource, Data, Path, Payload},
+    App, HttpRequest, HttpResponse, HttpServer,
 };
 use actix_web_actors::{ws, ws::WebsocketContext};
 use bytestring::ByteString;
 
 #[derive(Debug, Clone)]
 struct Context {
-    store: WsSessions,
+    store: Arc<Mutex<HashMap<String, WsSessions>>>,
 }
 
 impl Context {
     pub fn new() -> Self {
         Self {
-            store: WsSessions::new(),
+            store: Arc::new(Mutex::new(HashMap::new())),
+        }
+    }
+
+    pub fn get_sessions_for_id(&self, id: String) -> WsSessions {
+        let mut store = self.store.lock().unwrap();
+        if let Some(sessions) = store.get(&id) {
+            sessions.clone()
+        } else {
+            let sessions = WsSessions::new();
+            store.insert(id, sessions.clone());
+            sessions
         }
     }
 }
@@ -41,6 +51,12 @@ impl WsBroadcaster {
         for session in self.sessions.get_sessions_except_id(self.id) {
             session.do_send(SendText(text.clone()));
         }
+    }
+}
+
+impl Drop for WsBroadcaster {
+    fn drop(&mut self) {
+        self.sessions.remove(self.id);
     }
 }
 
@@ -104,6 +120,10 @@ impl WsSessions {
             })
             .collect()
     }
+
+    pub fn remove(&self, id: u32) {
+        self.0.lock().unwrap().store.remove(&id);
+    }
 }
 
 #[derive(Debug)]
@@ -155,10 +175,11 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for WsSession {
 
 async fn ws_index(
     request: HttpRequest,
+    id: Path<String>,
     state: Data<Context>,
     payload: Payload,
 ) -> actix_web::Result<HttpResponse> {
-    let ws = WsSession::new(state.store.clone());
+    let ws = WsSession::new(state.get_sessions_for_id(id.into_inner()));
     Ok(
         ws::handshake(&request)?.streaming(WebsocketContext::with_codec(
             ws,
@@ -175,7 +196,7 @@ async fn run() {
             .app_data(Data::new(ctx.clone()))
             .configure(|cfg| {
                 cfg.service(
-                    resource("/").route(actix_web::web::get().to(ws_index)),
+                    resource("/{id}").route(actix_web::web::get().to(ws_index)),
                 );
             })
     })
