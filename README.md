@@ -26,7 +26,7 @@ Application should work on Android platform.
 
 1. Code documentation;
 2. Unit tests;
-3. E2E tests.
+3. [E2E tests][3].
 
 
 
@@ -354,6 +354,7 @@ code readability.
 [flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
 [1]: https://webrtcglossary.com/signaling/
 [2]: https://en.wikipedia.org/wiki/Imperative_mood
+[3]: https://www.browserstack.com/guide/end-to-end-testing
 [ICE]: https://webrtcglossary.com/ice/
 [Effective Dart]: https://www.dartlang.org/guides/language/effective-dart
 [Git-ignored]: https://git-scm.com/docs/gitignore
