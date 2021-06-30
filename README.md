@@ -48,17 +48,16 @@ server without changes. Format of messaging between clients you can choose by yo
 4. Add following repository keys:
     - `HEROKU_API_KEY` - API key which you copied at step 2;
     - `HEROKU_EMAIL` - email with which you registered on [Heroku];
-    - `HEROKU_APP_NAME` - name of app with pattern `flutter-sandbox-{{ YOUR ID }}`.
 5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
 6. Run workflow on `master` branch
 
-Now your instance of signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR ID }}.herokuapp.com`.
+Now your instance of signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR GITHUB USERNAME }}.herokuapp.com`.
 
 
 ### Working with server example
 
-1. Alice initiates WebSocket connection with `wss://flutter-sandbox-foobar.herokuapp.com`
-2. Bob initiates WebSocket connection with `wss://flutter-sandbox-foobar.herokuapp.com`
+1. Alice initiates WebSocket connection with `wss://flutter-sandbox-ferris.herokuapp.com`
+2. Bob initiates WebSocket connection with `wss://flutter-sandbox-ferris.herokuapp.com`
 3. Alice sends message with text 'Hello Bob'
 4. Bob receives message with text 'Hello Bob'
 5. Bob sends message with text 'Hello Alice'
