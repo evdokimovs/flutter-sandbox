@@ -399,23 +399,23 @@ Labels are used for issues/PRs classification, as they:
 - allow to sum up statistics of how project is going on.
 
 There are several label groups:
-- `type: ` labels declare what the current issue/PR actually represents. These labels are __mandatory__: each issue/PR must have at least one such label.
-    - ~"feature" applies when something new is implemented (or is going to be implemented).
-    - ~"enhancement" applies when changing of existing features is involved (improvement or bugfix).
-    - ~"bug" applies to bugs and incorrectness problems. Can be applied to __issues only__.
-    - ~"rollback" applies when some existing changes are going to be rolled back.
-- `kind: ` labels describe what the current issue/PR is relevant to and which project aspects are involved. These labels are __mandatory__: each issue/PR must have at least one such label.
-    - ~"k::ui" applies to UI (user interface) and UX (user experience) changes. Use it when end-user are directly affected by this changes.
-    - ~"k::api" applies to API (application interface) changes. Use it when you're changing application interfaces, like: HTTP API method parameters, library exported interfaces, command-line interfaces, etc.
-    - ~"k::deploy" applies to changes that involve application deployment. Use it when you're changing the way application is deployed.
-    - ~"k::design" applies to changes of application architecture and implementation design. Use it when you're changing architecture and algorithms.
-    - ~"k::documentation" applies to changes of project documentation.
-    - ~"k::logging" applies to changes in application logs.
-    - ~"k::performance" applies to application performance related changes.
-    - ~"k::refactor" applies to refactor changes of existing code.
-    - ~"k::security" applies to application security related changes.
-    - ~"k::testing" applies to changes of project tests.
-    - ~"k::toolchain" applies to changes of project toolchain.
+- Type labels declare what the current issue/PR actually represents. These labels are __mandatory__: each issue/PR must have at least one such label.
+    - `feature` applies when something new is implemented (or is going to be implemented).
+    - `enhancement` applies when changing of existing features is involved (improvement or bugfix).
+    - `bug` applies to bugs and incorrectness problems. Can be applied to __issues only__.
+    - `rollback` applies when some existing changes are going to be rolled back.
+- `k::` labels describe what the current issue/PR is relevant to and which project aspects are involved. These labels are __mandatory__: each issue/PR must have at least one such label.
+    - `k::ui` applies to UI (user interface) and UX (user experience) changes. Use it when end-user are directly affected by this changes.
+    - `k::api` applies to API (application interface) changes. Use it when you're changing application interfaces, like: HTTP API method parameters, library exported interfaces, command-line interfaces, etc.
+    - `k::deploy` applies to changes that involve application deployment. Use it when you're changing the way application is deployed.
+    - `k::design` applies to changes of application architecture and implementation design. Use it when you're changing architecture and algorithms.
+    - `k::documentation` applies to changes of project documentation.
+    - `k::logging` applies to changes in application logs.
+    - `k::performance` applies to application performance related changes.
+    - `k::refactor` applies to refactor changes of existing code.
+    - `k::security` applies to application security related changes.
+    - `k::testing` applies to changes of project tests.
+    - `k::toolchain` applies to changes of project toolchain.
 
 
 
