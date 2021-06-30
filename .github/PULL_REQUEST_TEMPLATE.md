@@ -1,11 +1,3 @@
----
-name: Task
-about: Perform a task related to the project.
----
-
-
-
-
 ## Synopsis
 
 <Give a brief overview of the problem>
