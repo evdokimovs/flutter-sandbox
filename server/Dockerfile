@@ -26,6 +26,9 @@ RUN mkdir -p /out/etc/ \
  && echo 'nobody:x:65534:65534:nobody:/:' > /out/etc/passwd \
  && echo 'nobody:x:65534:' > /out/etc/group
 
+
+
+
 FROM scratch AS runtime
 
 COPY --from=dist /out /

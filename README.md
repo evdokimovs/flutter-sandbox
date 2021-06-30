@@ -1,120 +1,114 @@
-# Flutter sandbox
+Flutter sandbox
+===============
 
-Using [flutter_webrtc] library, create application for video/audio calls between two users.
+Using [flutter_webrtc] library create an application for audio/video calls between two users.
 
 Application should work on Android platform.
 
-[Application design](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
-
-[Application prototype](https://www.figma.com/proto/E9BZb5DuoTpHgTjriqMwip/Untitled)
-
-
-
-
-## Features of the application:
-
-1. Show video of partner participant;
-2. Play audio of partner participant;
-3. Frontal camera video publishing;
-4. User's audio publishing;
-5. Preview of the publishing video;
-6. Video publishing disabling/enabling;
-7. Audio publishing disabling/enabling.
+[Design](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
+| [Prototype](https://www.figma.com/proto/E9BZb5DuoTpHgTjriqMwip/Untitled)
 
 
 
 
-## Implementation requirements:
+## Required features
 
-1. Code documentation;
-2. Unit tests;
-3. [E2E tests][3].
+1. Display video and play audio of a partner participant.
+2. Publish video from the frontal camera of a device.
+3. Publishing user's audio.
+4. Preview of the published video.
+5. Ability to enable/disabled published video/audio.
+
+
+
+
+## Implementation requirements
+
+1. Code should be documented with [dartdoc] and the generated documentation should be available on GitHub Pages.
+2. Code should be covered with unit tests.
+3. [E2E (end-to-end) tests][3] should cover all the required features.
 
 
 
 
 ## [WebRTC signaling][1] server
 
-For [signaling][1] between clients you can use simple WebSocket server provided with this project.
-Messages sent to this server, will be broadcasted to the all _other_ clients connected to the same
-server without changes. Format of messaging between clients you can choose by yourself.
+For [signaling][1] between clients you can use simple WebSocket server provided within this project. Messages sent to this server, will be broadcast to the all _other_ clients connected to the same server without any changes. It's up to you to define the format of messages.
 
 
 ### Deploying on [Heroku]
 
-1. Create account on [Heroku] (if you don't have one)
-2. Copy [Heroku] API key from [account page][4]
-3. Go to [Actions Secrets][5] settings in your GitHub repository
-4. Add following repository keys:
-    - `HEROKU_API_KEY` - API key which you copied at step 2
-    - `HEROKU_EMAIL` - email with which you registered on [Heroku]
-5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
-6. Run workflow on `master` branch
+1. Create account on [Heroku] (if you don't have one).
+2. Copy [Heroku] API key from the [account page][4].
+3. Go to [Actions Secrets][5] settings in your GitHub repository.
+4. Add the following repository keys:
+    - `HEROKU_API_KEY` - API key which you copied at step 2;
+    - `HEROKU_EMAIL` - email with which you registered on [Heroku].
+5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow.
+6. Run workflow on `master` branch.
 
-Now your instance of signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR GITHUB USERNAME }}.herokuapp.com`.
+Now your instance of a signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR GITHUB USERNAME }}.herokuapp.com`.
 
 
-### Working with server example
+### Example of interaction with server
 
-1. Alice initiates WebSocket connection with `wss://flutter-sandbox-ferris.herokuapp.com`
-2. Bob initiates WebSocket connection with `wss://flutter-sandbox-ferris.herokuapp.com`
-3. Alice sends message with text 'Hello Bob'
-4. Bob receives message with text 'Hello Bob'
-5. Bob sends message with text 'Hello Alice'
-6. Alice receives message with text 'Hello Alice'
+1. Alice initiates a WebSocket connection on `wss://flutter-sandbox-ferris.herokuapp.com` endpoint.
+2. Bob initiates a WebSocket connection on `wss://flutter-sandbox-ferris.herokuapp.com` endpoint.
+3. Alice sends message with text `Hello Bob`.
+4. Bob receives message with text `Hello Bob`.
+5. Bob sends message with text `Hello Alice`.
+6. Alice receives message with text `Hello Alice`.
 
 
 
 
 ## [ICE] servers
 
-As [ICE] servers you can use `stun:stun.stunprotocol.org:3478` and `stun:stun.l.google.com:19302`.
+Use `stun:stun.stunprotocol.org:3478` and `stun:stun.l.google.com:19302` as [ICE] servers in your application.
 
 
 
 
 ## Releasing
 
-To release your application you can run `make release` command.
+To release your application run `make release` command.
 
 Or you can do it manually:
 
-```
+```bash
 $ git tag -d latest
-
 $ git tag latest
-
-$ git push latest
+$ git push origin latest --force 
 ```
 
-CI will build your application and create release on GitHub with built APK automatically.
+CI will build your application and create a release on GitHub with `.apk` built automatically.
 
 
 
 
-## Needed assets
+## Required assets
 
-All needed for this application assets you'll find in the `assets` directory.
+All the assets required for this application are located in the `assets/` directory.
 
 
 
 
 ## Final design of application
 
-Final design of application can differ from the provided one. This design is needed only
-for better explanation of expected application.
+Final design of the implemented application may vary from the provided one. The provided design aims only to explain the expected result better.
+
 
 
 
 ## Useful links
 
-- [Basics of WebRTC](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
+- [Basics of WebRTC](https://www.html5rocks.com/en/tutorials/webrtc/basics)
 - [Basic WebRTC glossary](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Protocols)
 - [Basics of WebRTC signaling](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity)
-- [WebRTC glossary](https://webrtcglossary.com/)
+- [WebRTC glossary](https://webrtcglossary.com)
 - [Flutter WebRTC usage examples](https://github.com/flutter-webrtc/flutter-webrtc/tree/master/example)
 - [Flutter WebRTC demo](https://github.com/flutter-webrtc/flutter-webrtc-demo)
-- [Dead simple WebRTC example written with JS](https://shanetully.com/2014/09/a-dead-simple-webrtc-example/)
+- [Dead simple WebRTC example written with JS](https://shanetully.com/2014/09/a-dead-simple-webrtc-example)
 
 
 
@@ -289,95 +283,7 @@ Developer __must push all his changes__ to the remote __at the end of his workin
 
 ## Code style
 
-All Dart source code must follow [Effective Dart] official recommendations.
-
-Any rules described here are in priority if they have conflicts with
-Effective Dart recommendations.
-
-
-### `switch` statement
-
-If __`case` section__ consists of __one line exactly__, then it's allowed to
-__place `break` statement on the same line__.
-
-#### 👍 Switch statement example
-
-```dart
-switch (fruit) {
-  case 'apple':
-    print('delish'); break;
-  case 'durian':
-    print('stinky');
-    break;
-  case 'peach':
-    print('sweet');
-    print('fuzzy');
-    break;  
-}
-```
-
-#### 🚫 `break` statements placed on the same line in multi-line `case` section:
-
-```dart
-switch (fruit) {
-  case 'peach':
-    print('sweet');
-    print('fuzzy'); break; 
-}
-```
-
-
-### Collections
-
-__Trailing comma__ of last item is __mandatory for multi-line__ collection
-declaration.  
-__No trailing comma__ required __for single-line__ collection declaration.
-
-#### 👍 Collections examples
-
-- Multi-line collection:
-
-    ```dart
-    Map<int, String> map = {
-      0: 'zero',
-      1: 'one',
-    };
-    args.addAll([
-      "--mode",
-      "release",
-      "--checked",
-    ]);
-    ```
-
-- Single-line collection:
-
-    ```dart
-    Map<int, String> map = {0: 'zero', 1: 'one'};
-    args.addAll(["--mode", "release", "--checked"]);
-    ```
-
-#### 🚫 Wrong collections examples
-
-- Multi-line collection without trailing comma:
-
-    ```dart
-    Map<int, String> map = {
-      0: 'zero',
-      1: 'one'
-    };
-    args.addAll([
-      "--mode",
-      "release",
-      "--checked"
-    ]);
-    ```
-
-- Single-line collection with trailing comma:
-
-    ```dart
-    Map<int, String> map = {0: 'zero', 1: 'one',};
-    args.addAll(["--mode", "release", "--checked",]);
-    ```
+All Dart source code must follow [Effective Dart] official recommendations. For code formatting [dartfmt] must be used (and verified on CI).
 
 
 
@@ -390,10 +296,12 @@ __No trailing comma__ required __for single-line__ collection declaration.
 [5]: /../../settings/secrets/actions
 [6]: /../../actions/workflows/deploy-server.yml
 
-[Medea]: https://github.com/instrumentisto/medea
-[flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
-[ICE]: https://webrtcglossary.com/ice/
+[dartdoc]: https://dart.dev/tools/dartdoc
+[dartfmt]: https://dart.dev/tools/dart-format
 [Effective Dart]: https://www.dartlang.org/guides/language/effective-dart
-[Git-ignored]: https://git-scm.com/docs/gitignore
+[flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
 [Git]: https://git-scm.com
-[Heroku]: https://www.heroku.com/
+[Git-ignored]: https://git-scm.com/docs/gitignore
+[Heroku]: https://www.heroku.com
+[ICE]: https://webrtcglossary.com/ice
+[Medea]: https://github.com/instrumentisto/medea

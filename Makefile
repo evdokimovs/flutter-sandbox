@@ -56,7 +56,7 @@ build:
 release:
 	-git tag -d latest
 	git tag latest
-	git push origin latest
+	git push origin latest --force
 
 
-.PHONY: deps build fmt lint test
+.PHONY: deps build fmt lint release test
