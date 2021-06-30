@@ -46,8 +46,8 @@ server without changes. Format of messaging between clients you can choose by yo
 2. Copy [Heroku] API key from [account page][4]
 3. Go to [Actions Secrets][5] settings in your GitHub repository
 4. Add following repository keys:
-    - `HEROKU_API_KEY` - API key which you copied at step 2;
-    - `HEROKU_EMAIL` - email with which you registered on [Heroku];
+    - `HEROKU_API_KEY` - API key which you copied at step 2
+    - `HEROKU_EMAIL` - email with which you registered on [Heroku]
 5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
 6. Run workflow on `master` branch
 
@@ -378,13 +378,6 @@ __No trailing comma__ required __for single-line__ collection declaration.
     Map<int, String> map = {0: 'zero', 1: 'one',};
     args.addAll(["--mode", "release", "--checked",]);
     ```
-
-
-### dartfmt
-
-__Using `dartfmt` is forbidden__ at the moment, as far as this utility is not 
-clever enough to consider some important formatting moments which leads to bad
-code readability.
 
 
 
