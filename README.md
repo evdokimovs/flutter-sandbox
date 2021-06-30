@@ -69,6 +69,15 @@ Use `stun:stun.stunprotocol.org:3478` and `stun:stun.l.google.com:19302` as [ICE
 
 
 
+## This repository usage
+
+This is [GitHub template][9] repository, so you need to click on 'Use this template' button and do all your work on your own repository which uses this repository as template.
+
+When you created your repository from this template, you should send to interviewee it's URL.
+
+
+
+
 ## Releasing
 
 To release your application run `make release` command.
@@ -82,6 +91,19 @@ $ git push origin latest --force
 ```
 
 CI will build your application and create a release on GitHub with `.apk` built automatically.
+
+
+
+
+## Final application demonstration
+
+When you finished your work, you should release your application to GitHub as described in the previous section.
+
+Firstly, you should show that application can make calls between devices and disabling/enabling audio/video works correctly.
+
+At the end, your application should be able to make video call with interviewee.
+
+Please, before demonstration make sure that your [Heroku] instance is not [sleeping][10].
 
 
 
@@ -133,36 +155,6 @@ Also, __all temporary cache files__ must be __placed inside a `.cache/`__ top-le
 
 __To emphasize toolchain directories__ (ones which do not contain project sources itself, but rather contain files of a project toolchain) their __name may be started with `_`__, which will make them to "bubble-up" in a repository source tree, so will allow easily to distinguish them from actual project sources (both for humans and tools).
 
-#### Layout example
-
-```bash
-tree -a -v --dirsfirst .
-```
-
-```tree
-.
-├── .cache/
-│   └── cargo/
-├── .git/
-├── .idea/
-├── _build/
-│   └── artifacts/
-│       ├── .dockerignore
-│       ├── .gitignore
-│       └── Dockerfile
-├── _dev/
-│   └── config.toml
-├── src/
-│   └── main.rs
-├── .editorconfig
-├── .gitignore
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── Cargo.lock
-├── Cargo.toml
-├── LICENSE.md
-└── README.md
-```
 
 ### Branches and tags
 
@@ -278,12 +270,169 @@ Implement employees salary and ajax queries
 Developer __must push all his changes__ to the remote __at the end of his working day__. This both prevents from accidental work losses and helps a lead to track developer's progress.
 
 
+### FCM (final commit message)
+
+FCM (final commit message) is a commit message of a pull request to a `master` branch.
+
+As it will be saved in a repository history forever, it has __extra requirements__ that __must__ be met:
+- __contain references__ to related PR;
+- do __not contain__ any non-relative helper markers (like `[skip ci]`);
+
+__Common commit messages__ which are not FCM __must NOT contain any references__, because references create crosslinks in mentioned PRs, which leads to spamming issues/PRs with unnecessary information. Only saved in history forever commits are allowed to create such crosslinks.
+
+If а PR contains some __side changes__ which are not directly relevant to the task, then such changes __must be described as a marked list in the `Additionally:` section (separated by a blank line)__ of a FCM.
+
+##### 👍 FCM examples
+
+```
+Implement employees salary and ajax queries (!43, #54)
+
+- update Employee salary algorithm
+- remove unused files from public/images/ dir
+
+Additionally:
+- update Git ignoring rules for TOML files
+```
+
+```
+Bump up project version to 1.54.1 (%71)
+```
+
+##### 🚫 Wrong FCM examples
+
+- Bad formatting of [references][103]:
+
+    ```
+    Implement employees salary and ajax queries(!43,#54)
+
+    - update Employee salary algorithm
+    - remove unused files from public/images/ dir
+    ```
+
+- Side changes are not separated:
+
+    ```
+    Implement employees salary and ajax queries (!43, #54)
+
+    - update Employee salary algorithm
+    - remove unused files from public/images/ dir
+    - update Git ignoring rules for TOML files
+    ```
+
+- Bad formatting of side changes:
+
+    ```
+    Implement employees salary and ajax queries (!43, #54)
+
+    - update Employee salary algorithm
+    - remove unused files from public/images/ dir
+    Additionally:
+    - update Git ignoring rules for TOML files
+    ```
+
+
+### Merging
+
+__All merges to the mainline__ project version (`master` branch) __must have an individual PR (pull request)__ and must be __done only in [fast-forward] manner__. This is required to keep mainline history linear, simple and clear.
+
+To achieve [fast-forward merge][fast-forward], __all branch commits__ (which doesn't exist in mainline) __must be squashed and rebased onto the latest mainline commit__. Notable moments are:
+- Before rebase __do not forget to merge your branch with latest mainline branch updates__, otherwise rebase result can broke changes.
+
+__Use `Merge` (or `Merge when pipeline succeeds`) button in GitHub__ for merging, as far as it performs [fast-forward] merges and removes a necessity to wait until CI pipeline is finished.
+
+#### Squash merging steps
+
+##### Using GitHub UI
+
+Performing squash merge correctly can be quite tricky when doing manually. To avoid complexity and mistakes in a day-to-day routine the [GitHub UI squash merging][13] is the __most preferred way__ for merging and a __developer should use it whenever it's possible__.
+
+0. Merge with latest `master` branch.
+
+1. Click on `Squash and merge` button.
+
+2. Paste first line of FCM to title field.
+
+3. Paste FCM without first line to body field.
+
+4. Click `Confirm squash and merge`.
+
+- __First line__ of FCM must go __as a title__ of the squash commit and __everything after as a message__.
+
+Squash merging via GitHub UI also preserves the whole branch commits history in the PR, which is good for history purposes.
+
+
+
+
+## Project requirements
+
+All features of application should be added with PRs. __Direct push to `master` is forbidden.__
+
+
+### Pull requests
+
+PRs (pull requests) are created to make changes in the repository and to solve some problem (fix a bug, implement a task, provide an improvement, etc).
+
+PR __must contain related changes only__. Any __other unrelated changes__ of repository must be done __via separate PR__. This rule keeps project history clear and unambiguous.
+
+PR __name must__:
+- __shortly and clearly describe its meaning__;
+- __contain `Draft: ` prefix__ until PR is merged or closed.
+
+Not merged or closed PRs should be [draft mode][11].
+
+PR __description must contain details of the solution__ (background/summary, solution description, notable moments, etc).
+
+Project have [PR template][12] which standardize PRs. Developer must __use [PR template][12] whenever it's possible__.  
+If there is no template for some rare case, then the PR must be formatted in the same manner as available templates.
+
+PR cannot be assigned to nobody and __always must have an assigned developer__.
+
+PR cannot go without any labels and __must have all required labels correctly applied__.
+
+
+### Labels
+
+Labels are used for issues/PRs classification, as they:
+- reflect the current state of issue/PR;
+- improve understanding of issue/PR, its purpose and application;
+- provide advanced search of issues/PRs;
+- allow to sum up statistics of how project is going on.
+
+There are several label groups:
+- `type: ` labels declare what the current issue/PR actually represents. These labels are __mandatory__: each issue/PR must have at least one such label.
+    - ~"feature" applies when something new is implemented (or is going to be implemented).
+    - ~"enhancement" applies when changing of existing features is involved (improvement or bugfix).
+    - ~"bug" applies to bugs and incorrectness problems. Can be applied to __issues only__.
+    - ~"rollback" applies when some existing changes are going to be rolled back.
+- `kind: ` labels describe what the current issue/PR is relevant to and which project aspects are involved. These labels are __mandatory__: each issue/PR must have at least one such label.
+    - ~"k::ui" applies to UI (user interface) and UX (user experience) changes. Use it when end-user are directly affected by this changes.
+    - ~"k::api" applies to API (application interface) changes. Use it when you're changing application interfaces, like: HTTP API method parameters, library exported interfaces, command-line interfaces, etc.
+    - ~"k::deploy" applies to changes that involve application deployment. Use it when you're changing the way application is deployed.
+    - ~"k::design" applies to changes of application architecture and implementation design. Use it when you're changing architecture and algorithms.
+    - ~"k::documentation" applies to changes of project documentation.
+    - ~"k::logging" applies to changes in application logs.
+    - ~"k::performance" applies to application performance related changes.
+    - ~"k::refactor" applies to refactor changes of existing code.
+    - ~"k::security" applies to application security related changes.
+    - ~"k::testing" applies to changes of project tests.
+    - ~"k::toolchain" applies to changes of project toolchain.
+
 
 
 
 ## Code style
 
 All Dart source code must follow [Effective Dart] official recommendations. For code formatting [dartfmt] must be used (and verified on CI).
+
+
+### `.editorconfig` rules
+
+Project contains [`.editorconfig` file][7] with both general and project-specific code style rules.
+
+__Applying `.editorconfig` rules is mandatory.__
+
+Make sure that your IDE supports `.editorconfig` rules applying.  
+For JetBrains IDE the [EditorConfig plugin][8] may be used.
 
 
 
@@ -295,10 +444,18 @@ All Dart source code must follow [Effective Dart] official recommendations. For 
 [4]: https://dashboard.heroku.com/account
 [5]: /../../settings/secrets/actions
 [6]: /../../actions/workflows/deploy-server.yml
+[7]: http://editorconfig.org
+[8]: https://plugins.jetbrains.com/phpStorm/plugin/7294-editorconfig
+[9]: https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/
+[10]: https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping
+[11]: https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests
+[12]: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates#pull-request-templates
+[13]: https://docs.github.com/en/github/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges#squash-and-merge-your-pull-request-commits
 
 [dartdoc]: https://dart.dev/tools/dartdoc
 [dartfmt]: https://dart.dev/tools/dart-format
 [Effective Dart]: https://www.dartlang.org/guides/language/effective-dart
+[fast-forward]: https://ariya.io/2013/09/fast-forward-git-merge
 [flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
 [Git]: https://git-scm.com
 [Git-ignored]: https://git-scm.com/docs/gitignore
