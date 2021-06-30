@@ -30,7 +30,7 @@ lint:
 	flutter analyze .
 
 
-# Runs Flutter integration tests.
+# Runs Flutter tests.
 #
 # Usage:
 #   make test
