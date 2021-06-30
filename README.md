@@ -402,7 +402,6 @@ There are several label groups:
 - Type labels declare what the current issue/PR actually represents. These labels are __mandatory__: each issue/PR must have at least one such label.
     - `feature` applies when something new is implemented (or is going to be implemented).
     - `enhancement` applies when changing of existing features is involved (improvement or bugfix).
-    - `bug` applies to bugs and incorrectness problems. Can be applied to __issues only__.
     - `rollback` applies when some existing changes are going to be rolled back.
 - `k::` labels describe what the current issue/PR is relevant to and which project aspects are involved. These labels are __mandatory__: each issue/PR must have at least one such label.
     - `k::ui` applies to UI (user interface) and UX (user experience) changes. Use it when end-user are directly affected by this changes.
