@@ -24,7 +24,7 @@ impl Broadcaster {
     ///
     /// Registers provided [`WsSession`] in the provided [`SessionsStore`].
     pub fn new(sessions: SessionsStore, addr: Addr<WsSession>) -> Self {
-        let id = sessions.add_session(addr);
+        let id = sessions.register_session(addr);
         Self { sessions, id }
     }
 
@@ -39,7 +39,7 @@ impl Broadcaster {
 
 impl Drop for Broadcaster {
     fn drop(&mut self) {
-        self.sessions.remove(self.id);
+        self.sessions.unregister(self.id);
     }
 }
 

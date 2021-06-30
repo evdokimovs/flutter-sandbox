@@ -1,4 +1,4 @@
-//! Implementation of the store of [`WsSession`] related to the one user.
+//! Implementation of the store of all [`WsSession`]s registered on this server.
 
 use std::{
     collections::HashMap,
@@ -20,7 +20,7 @@ struct Inner {
     next_id: u32,
 }
 
-/// Store of [`WsSession`]s related to the one user.
+/// Store of all [`WsSession`]s registered on this server.
 #[derive(Clone, Debug)]
 pub struct SessionsStore(Arc<Mutex<Inner>>);
 
@@ -33,10 +33,10 @@ impl SessionsStore {
         })))
     }
 
-    /// Adds new [`WsSession`] to this [`SessionsStore`].
+    /// Registers provided [`WsSession`] in this [`SessionsStore`].
     ///
     /// Returns ID generated for the provided [`WsSession`].
-    pub fn add_session(&self, session: Addr<WsSession>) -> u32 {
+    pub fn register_session(&self, session: Addr<WsSession>) -> u32 {
         let mut inner = self.0.lock().unwrap();
         let id = inner.next_id;
         inner.next_id += 1;
@@ -65,8 +65,9 @@ impl SessionsStore {
             .collect()
     }
 
-    /// Removes [`WsSession`] with a provided ID from this [`SessionsStore`].
-    pub fn remove(&self, id: u32) {
+    /// Unregisters [`WsSession`] with a provided ID from this
+    /// [`SessionsStore`].
+    pub fn unregister(&self, id: u32) {
         self.0.lock().unwrap().store.remove(&id);
     }
 }
