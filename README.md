@@ -42,15 +42,15 @@ server without changes. Format of messaging between clients you can choose by yo
 
 ### Deploying on [Heroku]
 
-- 1. Create account on [Heroku] (if you don't have one)
-- 2. Copy [Heroku] API key from [account page][4]
-- 3. Go to [Actions Secrets][5] settings in your GitHub repository
-- 4. Add following repository keys:
-    - 4.1. `HEROKU_API_KEY` - API key which you copied at step 2;
-    - 4.2. `HEROKU_EMAIL` - email with which you registered on [Heroku];
-    - 4.3. `HEROKU_APP_NAME` - name of app with pattern `flutter-sandbox-{{ YOUR ID }}`.
-- 5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
-- 6. Run workflow on `master` branch
+1. Create account on [Heroku] (if you don't have one)
+2. Copy [Heroku] API key from [account page][4]
+3. Go to [Actions Secrets][5] settings in your GitHub repository
+4. Add following repository keys:
+    - `HEROKU_API_KEY` - API key which you copied at step 2;
+    - `HEROKU_EMAIL` - email with which you registered on [Heroku];
+    - `HEROKU_APP_NAME` - name of app with pattern `flutter-sandbox-{{ YOUR ID }}`.
+5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
+6. Run workflow on `master` branch
 
 Now your instance of signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR ID }}.herokuapp.com`.
 
