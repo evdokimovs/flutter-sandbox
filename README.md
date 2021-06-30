@@ -395,8 +395,8 @@ code readability.
 [2]: https://en.wikipedia.org/wiki/Imperative_mood
 [3]: https://www.browserstack.com/guide/end-to-end-testing
 [4]: https://dashboard.heroku.com/account
-[5]: /settings/secrets/actions
-[6]: /actions/workflows/deploy-server.yml
+[5]: /../../settings/secrets/actions
+[6]: /../../actions/workflows/deploy-server.yml
 
 [Medea]: https://github.com/instrumentisto/medea
 [flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
