@@ -34,6 +34,8 @@ async fn ws_index(
 
 /// Runs WebSocket [`HttpServer`].
 async fn run() {
+    let port = std::env::var("PORT").unwrap_or_else(|_| "8080".to_string());
+    println!("{}", port);
     let ctx = SessionsStore::new();
     HttpServer::new(move || {
         App::new()
@@ -44,7 +46,7 @@ async fn run() {
                 );
             })
     })
-    .bind("0.0.0.0:80")
+    .bind(format!("0.0.0.0:{}", port))
     .unwrap()
     .run()
     .await

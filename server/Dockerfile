@@ -32,6 +32,6 @@ COPY --from=dist /out /
 
 USER nobody:nobody
 
-EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT ["/server"]
