@@ -35,15 +35,30 @@ Application should work on Android platform.
 
 ## [WebRTC signaling][1] server
 
-For [signaling][1] between clients you can use server hosted at `ws://example.com/<your username>`.
+For [signaling][1] between clients you can use simple WebSocket server provided with this project.
 Messages sent to this server, will be broadcasted to the all _other_ clients connected to the same
 server without changes. Format of messaging between clients you can choose by yourself.
 
 
+### Deploying on [Heroku]
+
+1. Create account on [Heroku] (if you don't have one)
+2. Copy [Heroku] API key from [account page][4]
+3. Go to [Actions Secrets][5] settings in your GitHub repository
+4. Add following repository keys:
+    4.1. `HEROKU_API_KEY` - API key which you copied at step 2;
+    4.2. `HEROKU_EMAIL` - email with which you registered on [Heroku];
+    4.3. `HEROKU_APP_NAME` - name of app with pattern `flutter-sandbox-{{ YOUR ID }}`.
+5. Go to ['Deploy signaling server to Heroku'][6] GitHub workflow
+6. Run workflow on `master` branch
+
+Now your instance of signaling server can be accessed at `wss://flutter-sandbox-{{ YOUR ID }}.herokuapp.com`.
+
+
 ### Working with server example
 
-1. Alice initiates WebSocket connection with `ws://example.com/foobar`
-2. Bob initiates WebSocket connection with `ws://example.com/foobar`
+1. Alice initiates WebSocket connection with `wss://flutter-sandbox-foobar.herokuapp.com`
+2. Bob initiates WebSocket connection with `wss://flutter-sandbox-foobar.herokuapp.com`
 3. Alice sends message with text 'Hello Bob'
 4. Bob receives message with text 'Hello Bob'
 5. Bob sends message with text 'Hello Alice'
@@ -379,6 +394,9 @@ code readability.
 [1]: https://webrtcglossary.com/signaling/
 [2]: https://en.wikipedia.org/wiki/Imperative_mood
 [3]: https://www.browserstack.com/guide/end-to-end-testing
+[4]: https://dashboard.heroku.com/account
+[5]: /settings/secrets/actions
+[6]: /actions/workflows/deploy-server.yml
 
 [Medea]: https://github.com/instrumentisto/medea
 [flutter_webrtc]: https://pub.dev/packages/flutter_webrtc
@@ -386,3 +404,4 @@ code readability.
 [Effective Dart]: https://www.dartlang.org/guides/language/effective-dart
 [Git-ignored]: https://git-scm.com/docs/gitignore
 [Git]: https://git-scm.com
+[Heroku]: https://www.heroku.com/
