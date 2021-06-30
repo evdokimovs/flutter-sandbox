@@ -4,7 +4,7 @@ Using [flutter_webrtc] library, create application for video/audio calls between
 
 Application should work on Android platform.
 
-[Application design on Figma](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
+[Application design](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
 
 [Application prototype](https://www.figma.com/proto/E9BZb5DuoTpHgTjriqMwip/Untitled)
 
