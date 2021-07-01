@@ -33,7 +33,7 @@ Application should work on Android platform.
 
 ## [WebRTC signaling][1] server
 
-For [signaling][1] between clients you can use simple WebSocket server provided within this project. Messages sent to this server, will be broadcast to the all _other_ clients connected to the same server without any changes. It's up to you to define the format of messages.
+For [signaling][1] between clients you may use simple WebSocket server provided within this project (or write your own). Messages sent to this server, will be broadcast to the all _other_ clients connected to the same server without any changes. It's up to you to define the format of messages.
 
 
 ### Deploying on [Heroku]
