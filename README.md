@@ -8,6 +8,8 @@ Application should work on Android platform.
 [Design](https://www.figma.com/file/E9BZb5DuoTpHgTjriqMwip/Untitled)
 | [Prototype](https://www.figma.com/proto/E9BZb5DuoTpHgTjriqMwip/Untitled)
 
+> This is a [GitHub template][9] repository, so you need to click on `Use this template` button above and do all the development in your own repository which uses this one as template only.
+
 
 
 
@@ -69,15 +71,6 @@ Use `stun:stun.stunprotocol.org:3478` and `stun:stun.l.google.com:19302` as [ICE
 
 
 
-## This repository usage
-
-This is [GitHub template][9] repository, so you need to click on 'Use this template' button and do all your work on your own repository which uses this repository as template.
-
-When you created your repository from this template, you should send to interviewee it's URL.
-
-
-
-
 ## Releasing
 
 To release your application run `make release` command.
@@ -95,13 +88,13 @@ CI will build your application and create a release on GitHub with `.apk` built 
 
 
 
-## Final application demonstration
+## Final demonstration
 
-When you finished your work, you should release your application to GitHub as described in the previous section.
+Once you finish the development, release the application to GitHub as described in the previous section.
 
-Firstly, you should show that application can make calls between devices and disabling/enabling audio/video works correctly.
+Firstly, you should demonstrate that application can make calls between devices and disabling/enabling audio/video works correctly.
 
-At the end, your application should be able to make video call with interviewee.
+At the end, your application should be able to make video call with a reviewer.
 
 Please, before demonstration make sure that your [Heroku] instance is not [sleeping][10].
 
@@ -265,11 +258,6 @@ Implement employees salary and ajax queries
     ```
 
 
-### Pushing
-
-Developer __must push all his changes__ to the remote __at the end of his working day__. This both prevents from accidental work losses and helps a lead to track developer's progress.
-
-
 ### FCM (final commit message)
 
 FCM (final commit message) is a commit message of a pull request to a `master` branch.
@@ -285,7 +273,7 @@ If а PR contains some __side changes__ which are not directly relevant to the t
 ##### 👍 FCM examples
 
 ```
-Implement employees salary and ajax queries (!43, #54)
+Implement employees salary and ajax queries (#43, #54)
 
 - update Employee salary algorithm
 - remove unused files from public/images/ dir
@@ -294,16 +282,12 @@ Additionally:
 - update Git ignoring rules for TOML files
 ```
 
-```
-Bump up project version to 1.54.1 (%71)
-```
-
 ##### 🚫 Wrong FCM examples
 
 - Bad formatting of [references][103]:
 
     ```
-    Implement employees salary and ajax queries(!43,#54)
+    Implement employees salary and ajax queries(#43,#54)
 
     - update Employee salary algorithm
     - remove unused files from public/images/ dir
@@ -312,7 +296,7 @@ Bump up project version to 1.54.1 (%71)
 - Side changes are not separated:
 
     ```
-    Implement employees salary and ajax queries (!43, #54)
+    Implement employees salary and ajax queries (#43, #54)
 
     - update Employee salary algorithm
     - remove unused files from public/images/ dir
@@ -322,7 +306,7 @@ Bump up project version to 1.54.1 (%71)
 - Bad formatting of side changes:
 
     ```
-    Implement employees salary and ajax queries (!43, #54)
+    Implement employees salary and ajax queries (#43, #54)
 
     - update Employee salary algorithm
     - remove unused files from public/images/ dir
@@ -336,9 +320,7 @@ Bump up project version to 1.54.1 (%71)
 __All merges to the mainline__ project version (`master` branch) __must have an individual PR (pull request)__ and must be __done only in [fast-forward] manner__. This is required to keep mainline history linear, simple and clear.
 
 To achieve [fast-forward merge][fast-forward], __all branch commits__ (which doesn't exist in mainline) __must be squashed and rebased onto the latest mainline commit__. Notable moments are:
-- Before rebase __do not forget to merge your branch with latest mainline branch updates__, otherwise rebase result can broke changes.
-
-__Use `Merge` (or `Merge when pipeline succeeds`) button in GitHub__ for merging, as far as it performs [fast-forward] merges and removes a necessity to wait until CI pipeline is finished.
+- Before rebase __do not forget to merge your branch with latest mainline branch updates__, otherwise rebase result can break changes.
 
 #### Squash merging steps
 
@@ -361,6 +343,11 @@ Performing squash merge correctly can be quite tricky when doing manually. To av
 Squash merging via GitHub UI also preserves the whole branch commits history in the PR, which is good for history purposes.
 
 
+### Pushing
+
+Developer __must push all his changes__ to the remote __at the end of his working day__. This both prevents from accidental work losses and helps a lead to track developer's progress.
+
+
 
 
 ## Project requirements
@@ -378,7 +365,7 @@ PR __name must__:
 - __shortly and clearly describe its meaning__;
 - __contain `Draft: ` prefix__ until PR is merged or closed.
 
-Not merged or closed PRs should be [draft mode][11].
+Not merged or closed PRs should be in [draft mode][11].
 
 PR __description must contain details of the solution__ (background/summary, solution description, notable moments, etc).
 
@@ -430,8 +417,7 @@ Project contains [`.editorconfig` file][7] with both general and project-specifi
 
 __Applying `.editorconfig` rules is mandatory.__
 
-Make sure that your IDE supports `.editorconfig` rules applying.  
-For JetBrains IDE the [EditorConfig plugin][8] may be used.
+Make sure that your IDE supports `.editorconfig` rules applying. For JetBrains IDE the [EditorConfig plugin][8] may be used.
 
 
 
@@ -445,7 +431,7 @@ For JetBrains IDE the [EditorConfig plugin][8] may be used.
 [6]: /../../actions/workflows/deploy-server.yml
 [7]: http://editorconfig.org
 [8]: https://plugins.jetbrains.com/phpStorm/plugin/7294-editorconfig
-[9]: https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/
+[9]: https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates
 [10]: https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping
 [11]: https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests
 [12]: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates#pull-request-templates
